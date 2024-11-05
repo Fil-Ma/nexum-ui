@@ -4,7 +4,7 @@
   "type": "module",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
     "dist",
     "src"
@@ -13,7 +13,7 @@
     "build": "rollup -c",
     "test": "jest",
     "prepare": "npm run build",
-    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'"
+    "lint": "eslint eslint.config.mjs --fix"
   },
   "keywords": [],
   "author": "",

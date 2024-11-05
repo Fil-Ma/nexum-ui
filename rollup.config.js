@@ -5,7 +5,7 @@ import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import typescript from "@rollup/plugin-typescript";
 
 export default {
-  input: "src/index.ts", // entry file
+  input: "src/index.ts",
   output: [
     {
       file: "dist/index.cjs.js",
@@ -22,7 +22,9 @@ export default {
     peerDepsExternal(),
     resolve(),
     commonjs(),
-    typescript({ tsconfig: "./tsconfig.json" }),
+    typescript({
+      tsconfig: "./tsconfig.json",
+    }),
     babel({ babelHelpers: "bundled", exclude: "node_modules/**" }),
   ],
 };
