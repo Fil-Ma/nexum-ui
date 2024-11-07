@@ -18,6 +18,10 @@
   "keywords": [],
   "author": "",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "github:Fil-Ma/nexum-ui"
+  },
   "description": "",
   "peerDependencies": {
     "react": "^18.3.1",
