@@ -4,9 +4,7 @@ import defaultTheme from "./defaultTheme";
 import { RecursivePartial } from "../types/utils";
 import merge from "lodash.merge";
 
-type TThemeContext = ThemeSchema | undefined;
-
-const ThemeContext = createContext<TThemeContext>(undefined);
+const ThemeContext = createContext<ThemeSchema>(defaultTheme);
 
 interface IThemeProvider {
   customTheme?: RecursivePartial<ThemeSchema>;
@@ -29,9 +27,10 @@ const ThemeProvider = ({ customTheme, children }: IThemeProvider) => {
 const useTheme = () => {
   const context = useContext(ThemeContext);
 
-  if (context === undefined) {
+  if (!context) {
     throw new Error("useTheme must be used within a ThemeProvider");
   }
+
   return context;
 };
 
