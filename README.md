@@ -1,5 +1,8 @@
 # Nexum UI
 
+> [!WARNING]
+> Nexum UI is still **experimental** and currently under **active development**
+
 Nexum UI is a small, reusable component library for building consistent and elegant user interfaces in React applications. This library provides a set of commonly used, pre-styled components designed to be highly flexible and customizable. Built with Styled Components, Nexum UI enables you to easily maintain styling consistency across your app while keeping the UI code clean and modular.
 
 **Key Features**
@@ -28,16 +31,12 @@ yarn add nexum-ui
 Start by importing the components you need into your React project:
 
 ```javascript
-import { Button, Input, Modal } from "nexum-ui";
+import { Button } from "nexum-ui";
 
 function App() {
   return (
     <div>
       <Button onClick={() => alert("Button clicked!")}>Click Me</Button>
-      <Input placeholder="Enter your name" />
-      <Modal isOpen={true} title="Hello, Nexum UI">
-        <p>This is a modal component from Nexum UI!</p>
-      </Modal>
     </div>
   );
 }

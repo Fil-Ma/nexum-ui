@@ -10,7 +10,7 @@ const Dialog = ({
   open,
   onClickOutside,
   children,
-  delayOnExit = 350,
+  delayOnExit = 300,
   atoms,
 }: IDialogProps) => {
   const [isAnimating, setIsAnimating] = useState(false);
@@ -55,12 +55,12 @@ const Dialog = ({
       role="dialog"
       aria-modal="true"
       onClick={handleOverlayClick}
-      $isExiting={isAnimating}
+      $isExiting={shouldRender && isAnimating}
       $customStyles={overlayStyleOverride}
     >
       <DialogContainer
         {...atoms?.["container"]}
-        $isExiting={isAnimating}
+        $isExiting={shouldRender && isAnimating}
         $customStyles={containerStyleOverride}
       >
         {children}

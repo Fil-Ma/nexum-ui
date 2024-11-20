@@ -12,9 +12,10 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@assets/*": ["src/assets/*"],
+      "@animations/*": ["src/animations/*"],
       "@components/*": ["src/components/*"],
       "@constants/*": ["src/constants/*"],
+      "@customTypes/*": ["src/customTypes/*"],
       "@hooks/*": ["src/hooks/*"],
       "@utils/*": ["src/utils/*"],
       "@theme/*": ["src/theme/*"]
