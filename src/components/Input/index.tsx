@@ -49,7 +49,10 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
     };
 
     return (
-      <InputContainer variant={variant} showPlaceholder={!label || shrinkLabel}>
+      <InputContainer
+        $variant={variant}
+        $showPlaceholder={!label || shrinkLabel}
+      >
         <InputBase
           ref={mergeRefs(ref, inputRef)}
           id={name}
@@ -59,7 +62,7 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
           onMouseOver={onInputHover}
           onMouseLeave={onInputLeave}
         />
-        <Label htmlFor={name} shrink={shrinkLabel}>
+        <Label htmlFor={name} $shrink={shrinkLabel}>
           {label}
         </Label>
         <InputDecoration variant={variant} />

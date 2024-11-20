@@ -3,10 +3,10 @@ import { TColor, TSize, TVariant } from "./types";
 import { Styles } from "styled-components/dist/types";
 
 const ButtonBase = styled.button<{
-  color: TColor;
-  size: TSize;
-  variant: TVariant;
-  customStyles?: Styles<object>;
+  $color: TColor;
+  $size: TSize;
+  $variant: TVariant;
+  $customStyles?: Styles<object>;
 }>`
   display: inline-flex;
   cursor: pointer;
@@ -16,15 +16,15 @@ const ButtonBase = styled.button<{
   border-radius: 0.375rem;
   min-width: 30px;
 
-  font-size: ${(props) => buttonStyles["fontSize"][props.size]};
-  line-height: ${(props) => buttonStyles["lineHeight"][props.size]};
-  font-weight: ${(props) => buttonStyles["fontWeight"][props.size]};
-  padding-top: ${(props) => buttonStyles["paddingTop"][props.size]};
-  padding-bottom: ${(props) => buttonStyles["paddingBottom"][props.size]};
-  padding-left: ${(props) => buttonStyles["paddingLeft"][props.size]};
-  padding-right: ${(props) => buttonStyles["paddingRight"][props.size]};
+  font-size: ${(props) => buttonStyles["fontSize"][props.$size]};
+  line-height: ${(props) => buttonStyles["lineHeight"][props.$size]};
+  font-weight: ${(props) => buttonStyles["fontWeight"][props.$size]};
+  padding-top: ${(props) => buttonStyles["paddingTop"][props.$size]};
+  padding-bottom: ${(props) => buttonStyles["paddingBottom"][props.$size]};
+  padding-left: ${(props) => buttonStyles["paddingLeft"][props.$size]};
+  padding-right: ${(props) => buttonStyles["paddingRight"][props.$size]};
 
-  ${(props) => props?.customStyles && css(props.customStyles)}
+  ${(props) => props?.$customStyles && css(props.$customStyles)}
 `;
 
 export default ButtonBase;

@@ -24,8 +24,8 @@ const placeholderColor = (color: string) => `
   }`;
 
 export const InputContainer = styled.div<{
-  variant: TVariant;
-  showPlaceholder: boolean;
+  $variant: TVariant;
+  $showPlaceholder: boolean;
 }>`
   position: relative;
   font-family: "Roboto", sans-serif;
@@ -37,9 +37,9 @@ export const InputContainer = styled.div<{
   padding: 8px 12px;
 
   ${(props) => {
-    const { variant } = props;
+    const { $variant } = props;
 
-    if (variant === "filled") {
+    if ($variant === "filled") {
       return `
         :focus-within {
           background: #e8eaf6; /* Slightly darker on focus */
@@ -49,7 +49,7 @@ export const InputContainer = styled.div<{
           padding: 8px 0 4px;
         }
       `;
-    } else if (variant === "outlined") {
+    } else if ($variant === "outlined") {
       return `
         border: 1px solid #e0e0e0;
 
@@ -70,7 +70,7 @@ export const InputContainer = styled.div<{
   }
 
   ${(props) =>
-    placeholderColor(props.showPlaceholder ? "#9E9E9E" : "transparent")}
+    placeholderColor(props.$showPlaceholder ? "#9E9E9E" : "transparent")}
 `;
 
 export const InputBase = styled.input`
@@ -85,7 +85,7 @@ export const InputBase = styled.input`
   padding: 8px;
 `;
 
-export const Label = styled.label<{ shrink: boolean }>`
+export const Label = styled.label<{ $shrink: boolean }>`
   position: absolute;
   left: 12px;
   top: 12px;
@@ -94,7 +94,7 @@ export const Label = styled.label<{ shrink: boolean }>`
   pointer-events: none;
   transition: 0.2s ease-in-out;
   ${(props) =>
-    props.shrink &&
+    props.$shrink &&
     `
     top: -10px;
     font-size: 12px;

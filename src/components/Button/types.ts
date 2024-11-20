@@ -1,5 +1,5 @@
-import { ThemeSchema } from "@theme/defaultTheme/types";
-import type { ComponentProps, CSSProperties, ElementType } from "react";
+import { StylesOverride } from "@customTypes/index";
+import type { ComponentProps, ElementType } from "react";
 
 export type TVariant = "text" | "contained" | "outlined";
 export type TColor = "primary" | "secondary";
@@ -10,7 +10,7 @@ type ButtonUniqueProps<E extends ElementType = ElementType> = {
   color?: TColor;
   size?: TSize;
   as?: E;
-  customStyles?: CSSProperties | ((theme: ThemeSchema) => CSSProperties);
+  customStyles?: StylesOverride;
 };
 
 export type ButtonProps<E extends ElementType> = ButtonUniqueProps<E> &

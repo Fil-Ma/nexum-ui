@@ -1,7 +1,7 @@
 import { createContext, useContext, useMemo } from "react";
 import { ThemeSchema } from "./defaultTheme/types";
 import defaultTheme from "./defaultTheme";
-import { RecursivePartial } from "../types/utils";
+import { RecursivePartial } from "../customTypes/utils";
 import merge from "lodash.merge";
 
 const ThemeContext = createContext<ThemeSchema>(defaultTheme);

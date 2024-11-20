@@ -3,6 +3,7 @@ import { ButtonProps, TColor, TVariant } from "./types";
 import ButtonBase from "./ButtonBase";
 import { useTheme } from "@theme/ThemeProvider";
 import { ThemeSchema } from "@theme/defaultTheme/types";
+import useStylesOverride from "@hooks/useStylesOverride";
 
 enum ButtonState {
   IDLE = "idle",
@@ -21,14 +22,7 @@ function Button<E extends ElementType>({
   ...props
 }: ButtonProps<E>) {
   const theme = useTheme();
-
-  const stylesOverride = useMemo(() => {
-    if (typeof customStyles === "function") {
-      return customStyles(theme);
-    } else {
-      return customStyles;
-    }
-  }, [customStyles]);
+  const stylesOverride = useStylesOverride(theme, customStyles);
 
   const themeColors = getColors(theme, variant, color, false);
 
@@ -36,10 +30,10 @@ function Button<E extends ElementType>({
     <ButtonBase
       className={className}
       as={as}
-      variant={variant}
-      color={color}
-      size={size}
-      customStyles={{
+      $variant={variant}
+      $color={color}
+      $size={size}
+      $customStyles={{
         ...themeColors[ButtonState.IDLE],
         ...stylesOverride,
 
