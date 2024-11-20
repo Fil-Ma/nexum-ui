@@ -7,6 +7,7 @@ export {
   DialogHeader,
 } from "./components/Dialog/atoms";
 export { default as Radio } from "./components/Radio";
+export { default as Switch } from "./components/Switch";
 
 export type { ThemeSchema } from "./theme/defaultTheme/types";
 export { ThemeProvider, useTheme } from "./theme/ThemeProvider";
