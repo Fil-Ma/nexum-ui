@@ -93,3 +93,14 @@ export const slideOutRight = keyframes`
     transform: translateX(100%);
   }
 `;
+
+export const ripple = keyframes`
+from {
+  transform: scale(0.8);
+  opacity: 0.5;
+}
+to {
+  transform: scale(1.8);
+  opacity: 0;
+}
+`;
