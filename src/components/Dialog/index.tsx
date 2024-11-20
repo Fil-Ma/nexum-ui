@@ -1,16 +1,22 @@
-import styled, { css } from "styled-components";
-import { IDialogProps } from "./types";
 import { useEffect, useState } from "react";
-import { fadeIn, fadeOut, scaleIn, scaleOut } from "@animations/keyframes";
-import useStylesOverride from "@hooks/useStylesOverride";
-import { Styles } from "styled-components/dist/types";
 import { useTheme } from "@theme/ThemeProvider";
+import useStylesOverride from "@hooks/useStylesOverride";
+import { IDialogProps, TDialogVariant } from "./types";
+import { Overlay, DialogContainer, SideSheetContainer } from "./styles";
+
+const containersList: Record<TDialogVariant, React.ComponentType<any>> = {
+  modal: DialogContainer,
+  bottom: DialogContainer,
+  side: SideSheetContainer,
+};
 
 const Dialog = ({
   open,
   onClickOutside,
   children,
   delayOnExit = 300,
+  variant = "modal",
+  side = "right",
   atoms,
 }: IDialogProps) => {
   const [isAnimating, setIsAnimating] = useState(false);
@@ -49,6 +55,8 @@ const Dialog = ({
 
   if (!shouldRender) return null;
 
+  const Container = containersList[variant];
+
   return (
     <Overlay
       {...atoms?.["overlay"]}
@@ -57,50 +65,19 @@ const Dialog = ({
       onClick={handleOverlayClick}
       $isExiting={shouldRender && isAnimating}
       $customStyles={overlayStyleOverride}
+      $variant={variant}
     >
-      <DialogContainer
+      <Container
         {...atoms?.["container"]}
         $isExiting={shouldRender && isAnimating}
         $customStyles={containerStyleOverride}
+        $variant={variant}
+        $side={side}
       >
         {children}
-      </DialogContainer>
+      </Container>
     </Overlay>
   );
 };
 
 export default Dialog;
-
-type ContainerProps = {
-  $isExiting: boolean;
-  $customStyles?: Styles<object>;
-};
-
-const Overlay = styled.div<ContainerProps>`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  animation: ${(props) => (props.$isExiting ? fadeOut : fadeIn)} 0.3s ease-out;
-  ${(props) => props?.$customStyles && css(props.$customStyles)}
-`;
-
-const DialogContainer = styled.div<ContainerProps>`
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 500px;
-  margin: 16px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  animation: ${(props) => (props.$isExiting ? scaleOut : scaleIn)} 0.3s ease-out;
-  ${(props) => props?.$customStyles && css(props.$customStyles)}
-`;
