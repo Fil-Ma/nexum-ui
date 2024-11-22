@@ -13,7 +13,9 @@ export { default as Slider } from "./components/Slider";
 export { default as Chip } from "./components/Chip";
 export { default as Menu } from "./components/Menu";
 export { default as Carousel } from "./components/Carousel";
-export { default as SearchBar } from "./components/Search";
+export { default as SearchBar } from "./components/SearchBar";
+export { default as LinearProgress } from "./components/Progress/LinearProgress";
+export { default as CircularProgress } from "./components/Progress/CircularProgress";
 
 export type { ThemeSchema } from "./theme/defaultTheme/types";
 export { ThemeProvider, useTheme } from "./theme/ThemeProvider";
