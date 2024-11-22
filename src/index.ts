@@ -16,6 +16,8 @@ export { default as Carousel } from "./components/Carousel";
 export { default as SearchBar } from "./components/SearchBar";
 export { default as LinearProgress } from "./components/Progress/LinearProgress";
 export { default as CircularProgress } from "./components/Progress/CircularProgress";
+export { default as Tabs } from "./components/Tabs";
+export { default as Tooltip } from "./components/Tooltip";
 
 export type { ThemeSchema } from "./theme/defaultTheme/types";
 export { ThemeProvider, useTheme } from "./theme/ThemeProvider";
