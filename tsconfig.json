@@ -13,6 +13,7 @@
     "baseUrl": ".",
     "paths": {
       "@animations/*": ["src/animations/*"],
+      "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
       "@constants/*": ["src/constants/*"],
       "@customTypes/*": ["src/customTypes/*"],
