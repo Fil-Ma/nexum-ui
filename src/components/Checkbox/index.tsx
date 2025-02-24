@@ -28,7 +28,7 @@ const Checkbox = ({
   return (
     <CheckboxWrapper>
       <CheckboxContainer
-        size={size}
+        $size={size}
         onClick={handleRipple}
         role="checkbox"
         aria-checked={checked}
@@ -39,7 +39,7 @@ const Checkbox = ({
           onChange={onChange}
           {...props}
         />
-        <CheckboxBox size={size} color={color} checked={!!checked}>
+        <CheckboxBox $size={size} $color={color} $checked={!!checked}>
           <Icon />
         </CheckboxBox>
         {isRippling && <Ripple />}

@@ -1,5 +1,5 @@
-import React, { useState, ReactNode } from "react";
-import { TabsContainer, TabButton, TabPanel } from "./styles";
+import { useState } from "react";
+import { TabsContainer, TabButton } from "./styles";
 import { ITabsProps } from "./types";
 
 const Tabs = ({ tabs, defaultActiveIndex = 0, onTabChange }: ITabsProps) => {
@@ -15,7 +15,7 @@ const Tabs = ({ tabs, defaultActiveIndex = 0, onTabChange }: ITabsProps) => {
       {tabs.map((tab, index) => (
         <TabButton
           key={index}
-          isActive={activeIndex === index}
+          $isActive={activeIndex === index}
           onClick={() => handleTabClick(index)}
         >
           {tab.label}

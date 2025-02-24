@@ -1,4 +1,4 @@
-import { ElementType, useMemo } from "react";
+import { ElementType } from "react";
 import { ButtonProps, TColor, TVariant } from "./types";
 import ButtonBase from "./ButtonBase";
 import { useTheme } from "@theme/ThemeProvider";

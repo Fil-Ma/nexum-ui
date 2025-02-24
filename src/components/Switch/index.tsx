@@ -18,15 +18,15 @@ const Switch = ({
 }: ISwitchProps) => {
   return (
     <SwitchWrapper>
-      <SwitchContainer size={size}>
+      <SwitchContainer $size={size}>
         <SwitchInput
           type="checkbox"
           checked={checked}
           onChange={onChange}
           {...props}
         />
-        <SwitchTrack size={size} color={color} checked={!!checked} />
-        <SwitchHandle size={size} checked={!!checked} color={color} />
+        <SwitchTrack $size={size} $color={color} $checked={!!checked} />
+        <SwitchHandle $size={size} $checked={!!checked} />
       </SwitchContainer>
       {label && <SwitchLabel>{label}</SwitchLabel>}
     </SwitchWrapper>

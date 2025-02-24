@@ -50,7 +50,7 @@ const Carousel = ({
           {slides.map((_, index) => (
             <Indicator
               key={index}
-              active={index === currentIndex}
+              $active={index === currentIndex}
               onClick={() => goToSlide(index)}
             />
           ))}

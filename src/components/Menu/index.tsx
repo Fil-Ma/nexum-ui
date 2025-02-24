@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { MenuContainer, MenuList, MenuItem, Overlay } from "./styles";
 import { IMenuProps } from "./types";
 

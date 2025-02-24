@@ -1,17 +1,5 @@
-import styled, { css } from "styled-components";
-import { IDialogContainerProps, TDialogVariant } from "./types";
-import {
-  fadeIn,
-  fadeOut,
-  scaleIn,
-  scaleOut,
-  slideIn,
-  slideInLeft,
-  slideInRight,
-  slideOut,
-  slideOutLeft,
-  slideOutRight,
-} from "@animations/keyframes";
+import styled, { createGlobalStyle, css } from "styled-components";
+import { IDialogContainerProps } from "./types";
 
 export const Overlay = styled.div<IDialogContainerProps>`
   position: fixed;
@@ -19,23 +7,15 @@ export const Overlay = styled.div<IDialogContainerProps>`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
   align-items: ${(props) =>
     props.$variant === "bottom" ? "flex-end" : "center"};
   z-index: 999;
-  animation: ${(props) => (props.$isExiting ? fadeOut : fadeIn)} 0.3s ease-out;
+
   ${(props) => props?.$customStyles && css(props.$customStyles)}
 `;
-
-const getContainerAnimation = (isExiting: boolean, variant: TDialogVariant) => {
-  if (variant === "modal") {
-    return isExiting ? scaleOut : scaleIn;
-  } else {
-    return isExiting ? slideOut : slideIn;
-  }
-};
 
 export const DialogContainer = styled.div<IDialogContainerProps>`
   background: #fff;
@@ -45,9 +25,6 @@ export const DialogContainer = styled.div<IDialogContainerProps>`
   flex-direction: column;
   overflow: hidden;
   z-index: 1000;
-  animation: ${(props) =>
-      getContainerAnimation(props.$isExiting, props.$variant)}
-    0.3s ease-out;
 
   ${(props) => {
     if (props.$variant === "modal") {
@@ -78,17 +55,115 @@ export const SideSheetContainer = styled.div<IDialogContainerProps>`
     props.$side === "left"
       ? "4px 0 10px rgba(0, 0, 0, 0.2)"
       : "-4px 0 10px rgba(0, 0, 0, 0.2)"};
-  animation: ${(props) =>
-      props.$isExiting
-        ? props.$side === "left"
-          ? slideOutLeft
-          : slideOutRight
-        : props.$side === "left"
-          ? slideInLeft
-          : slideInRight}
-    0.3s ease-out;
+
   max-height: 100%;
   z-index: 1000;
 
   ${(props) => props?.$customStyles && css(props.$customStyles)}
+`;
+
+export const DialogGlobalStyles = createGlobalStyle<{ $delay: number }>`
+  /* OVERLAY ANIMATIONS */
+
+  .overlay-appear {
+    opacity: 0;
+  }
+
+  .overlay-appear-active {
+    opacity: 1;
+    transition: opacity ${(props) => props.$delay}s ease-out;
+  }
+
+  .overlay-exit {
+    opacity: 1;
+  }
+
+  .overlay-exit-active {
+    opacity: 0;
+    transition: opacity ${(props) => props.$delay}s ease-out;
+  }
+
+  /* MODAL ANIMATIONS */
+
+  .modal-appear {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  .modal-appear-active {
+    transform: scale(1);
+    opacity: 1;
+    transition: opacity ${(props) => props.$delay}s ease-out, transform ${(props) => props.$delay}s ease-out;
+  }
+
+  .modal-exit {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  .modal-exit-active {
+    transform: scale(0.9);
+    opacity: 0;
+    transition: opacity ${(props) => props.$delay}s ease-out, transform ${(props) => props.$delay}s ease-out;
+  }
+
+  /* BOTTOM SHEET ANIMATIONS */
+
+  .bottom-appear {
+    transform: translateY(100%);
+  }
+
+  .bottom-appear-active {
+    transform: translateY(0);
+    transition: transform ${(props) => props.$delay}s ease-out;
+  }
+
+  .bottom-exit {
+    transform: translateY(0);
+  }
+
+  .bottom-exit-active {
+    transform: translateY(100%);
+    transition: transform ${(props) => props.$delay}s ease-out;
+  }
+
+  /* RIGHT SIDE ANIMATIONS */
+
+  .right-side-appear {
+    transform: translateX(100%);
+  }
+
+  .right-side-appear-active {
+    transform: translateX(0);
+    transition: transform ${(props) => props.$delay}s ease-out;
+  }
+
+  .right-side-exit {
+    transform: translateX(0);
+  }
+
+  .right-side-exit-active {
+    transform: translateX(100%);
+    transition: transform ${(props) => props.$delay}s ease-out;
+  }
+
+  /* LEFT SIDE ANIMATIONS */
+
+  .left-side-appear {
+    transform: translateX(-100%);
+  }
+
+  .left-side-appear-active {
+    transform: translateX(0);
+    transition: transform ${(props) => props.$delay}s ease-out;
+  }
+
+  .left-side-exit {
+    transform: translateX(0);
+  }
+
+  .left-side-exit-active {
+    transform: translateX(-100%);
+    transition: transform ${(props) => props.$delay}s ease-out;
+  }
 `;

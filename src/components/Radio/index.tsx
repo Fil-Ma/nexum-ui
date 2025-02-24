@@ -12,6 +12,7 @@ const RadioInput = ({
   label,
   color = "#6200ee",
   size = 24,
+  spacing = 8,
   ...props
 }: IRadioProps) => {
   const [ripples, setRipples] = useState<Array<number>>([]);
@@ -25,13 +26,13 @@ const RadioInput = ({
     }, 600);
   };
   return (
-    <RadioWrapper size={size}>
+    <RadioWrapper $size={size} $spacing={spacing}>
       <input type="radio" {...props} />
-      <RadioContainer size={size} color={color} onClick={handleRipple}>
+      <RadioContainer $size={size} $color={color} onClick={handleRipple}>
         {ripples.map((ripple) => (
-          <RippleEffect key={ripple} color={color} size={size} />
+          <RippleEffect key={ripple} $color={color} $size={size} />
         ))}
-        {props.checked && <RadioCircle color={color} />}
+        {props.checked && <RadioCircle $color={color} />}
       </RadioContainer>
       {label && <RadioLabel>{label}</RadioLabel>}
     </RadioWrapper>

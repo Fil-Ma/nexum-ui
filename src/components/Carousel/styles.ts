@@ -34,10 +34,10 @@ export const Indicators = styled.div`
   gap: 8px;
 `;
 
-export const Indicator = styled.div<{ active: boolean }>`
+export const Indicator = styled.div<{ $active: boolean }>`
   width: 10px;
   height: 10px;
-  background: ${(props) => (props.active ? "#6200ee" : "rgba(0, 0, 0, 0.5)")};
+  background: ${(props) => (props.$active ? "#6200ee" : "rgba(0, 0, 0, 0.5)")};
   border-radius: 50%;
   cursor: pointer;
 

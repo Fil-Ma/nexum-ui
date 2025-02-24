@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { TooltipContainer, TooltipContent } from "./styles";
 import { ITooltipProps } from "./types";
 
@@ -17,7 +17,7 @@ const Tooltip = ({ children, content, position = "top" }: ITooltipProps) => {
     >
       {children}
       {isVisible && (
-        <TooltipContent position={position}>{content}</TooltipContent>
+        <TooltipContent $position={position}>{content}</TooltipContent>
       )}
     </TooltipContainer>
   );

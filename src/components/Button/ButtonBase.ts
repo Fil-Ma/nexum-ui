@@ -15,6 +15,7 @@ const ButtonBase = styled.button<{
   transition: all 300ms ease-in-out;
   border-radius: 0.375rem;
   min-width: 30px;
+  border: none;
 
   font-size: ${(props) => buttonStyles["fontSize"][props.$size]};
   line-height: ${(props) => buttonStyles["lineHeight"][props.$size]};

@@ -34,7 +34,8 @@ const positionStyles = {
 };
 
 export const TooltipContent = styled.div<{
-  position: TooltipPostion;
+  $position: TooltipPostion;
+  $cursor?: string;
 }>`
   position: absolute;
   white-space: nowrap;
@@ -44,7 +45,8 @@ export const TooltipContent = styled.div<{
   font-size: 14px;
   border-radius: 4px;
   z-index: 10;
-  ${(props) => positionStyles[props.position]};
+  cursor: ${(props) => props.$cursor || "auto"};
+  ${(props) => positionStyles[props.$position]};
 
   opacity: 0;
   animation: fadeIn 0.2s ease-in-out forwards;

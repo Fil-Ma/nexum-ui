@@ -12,7 +12,6 @@ type AtomProps = {
 };
 
 export interface IDialogContainerProps {
-  $isExiting: boolean;
   $customStyles?: Styles<object>;
   $variant: TDialogVariant;
   $side: TSheetSide;
