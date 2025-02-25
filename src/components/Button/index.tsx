@@ -1,16 +1,10 @@
 import { ElementType } from "react";
-import { ButtonProps, TColor, TVariant } from "./types";
+import { ButtonProps, ButtonState } from "./types";
 import ButtonBase from "./ButtonBase";
 import { useTheme } from "@theme/ThemeProvider";
 import { ThemeSchema } from "@theme/defaultTheme/types";
 import useStylesOverride from "@hooks/useStylesOverride";
-
-enum ButtonState {
-  IDLE = "idle",
-  HOVER = "hover",
-  ACTIVE = "active",
-  DISABLED = "disabled",
-}
+import { getColors } from "./getColors";
 
 function Button<E extends ElementType>({
   as,
@@ -61,119 +55,3 @@ function Button<E extends ElementType>({
 }
 
 export default Button;
-
-type ColorKeys = Record<"color" | "backgroundColor", string>;
-type GetColors = (
-  theme: ThemeSchema,
-  variant: TVariant,
-  color: TColor,
-  isDark: boolean
-) => Record<ButtonState, ColorKeys>;
-
-const getColors: GetColors = (theme, variant, color, isDark) => {
-  const { primary, secondary, neutral } = theme.colors;
-  const themeModifier = isDark ? "dark" : "light";
-
-  const variantStyles: Record<TVariant, any> = {
-    contained: {
-      primary: {
-        [ButtonState.IDLE]: {
-          color: "#FFF",
-          backgroundColor: primary[themeModifier][500],
-        },
-        [ButtonState.HOVER]: {
-          color: "#FFF",
-          backgroundColor: primary[themeModifier][600],
-        },
-        [ButtonState.ACTIVE]: {
-          color: "#FFF",
-          backgroundColor: primary[themeModifier][700],
-        },
-        [ButtonState.DISABLED]: {
-          color: neutral[themeModifier][300],
-          backgroundColor: primary[themeModifier][400],
-        },
-      },
-      secondary: {
-        [ButtonState.IDLE]: {
-          color: neutral[themeModifier][800],
-          backgroundColor: neutral[themeModifier][300],
-        },
-        [ButtonState.HOVER]: {
-          color: neutral[themeModifier][800],
-          backgroundColor: neutral[themeModifier][400],
-        },
-        [ButtonState.ACTIVE]: {
-          color: neutral[themeModifier][800],
-          backgroundColor: neutral[themeModifier][500],
-        },
-        [ButtonState.DISABLED]: {
-          color: neutral[themeModifier][300],
-          backgroundColor: primary[themeModifier][400],
-        },
-      },
-    },
-    outlined: {
-      primary: {
-        [ButtonState.IDLE]: {
-          color: primary[themeModifier][400],
-          backgroundColor: "transparent",
-          border: `1px solid ${primary[themeModifier][400]}`,
-        },
-        [ButtonState.HOVER]: {
-          color: "#FFF",
-          backgroundColor: primary[themeModifier][500],
-        },
-        [ButtonState.ACTIVE]: {
-          color: "#FFF",
-          backgroundColor: primary[themeModifier][600],
-        },
-        [ButtonState.DISABLED]: {
-          color: neutral[themeModifier][300],
-          backgroundColor: primary[themeModifier][400],
-          borderColor: neutral[themeModifier][300],
-        },
-      },
-      secondary: {
-        [ButtonState.IDLE]: {
-          color: neutral[themeModifier][800],
-          backgroundColor: neutral[themeModifier][300],
-        },
-        [ButtonState.HOVER]: {
-          color: neutral[themeModifier][800],
-          backgroundColor: neutral[themeModifier][400],
-        },
-        [ButtonState.ACTIVE]: {
-          color: neutral[themeModifier][800],
-          backgroundColor: neutral[themeModifier][500],
-        },
-        [ButtonState.DISABLED]: {
-          color: neutral[themeModifier][300],
-          backgroundColor: primary[themeModifier][400],
-        },
-      },
-    },
-    text: {
-      primary: {
-        [ButtonState.IDLE]: {
-          color: "",
-          backgroundColor: "",
-        },
-        [ButtonState.HOVER]: {
-          color: "",
-          backgroundColor: "",
-        },
-        [ButtonState.ACTIVE]: {
-          color: "",
-          backgroundColor: "",
-        },
-        [ButtonState.DISABLED]: {
-          color: "",
-          backgroundColor: "",
-        },
-      },
-    },
-  };
-
-  return variantStyles[variant][color];
-};
