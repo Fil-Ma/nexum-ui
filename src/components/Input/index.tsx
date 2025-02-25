@@ -1,6 +1,12 @@
 import { forwardRef, useRef, useState } from "react";
-import { InputBase, Label, InputDecoration, InputContainer } from "./InputBase";
-import { IInputProps } from "./types";
+import {
+  InputBase,
+  InputDecoration,
+  InputContainer,
+  OutlinedLabel,
+  FilledLabel,
+} from "./InputBase";
+import { IInputProps, TSpacing } from "./types";
 import { mergeRefs } from "@utils/mergeRefs";
 
 const Input = forwardRef<HTMLInputElement, IInputProps>(
@@ -14,6 +20,8 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
       onMouseOver,
       onMouseLeave,
       disableHoverShrink = false,
+      fullWidth = false,
+      spacing = { x: 0, y: 12 },
       ...props
     },
     ref
@@ -48,10 +56,17 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
       if (onMouseLeave) onMouseLeave(event);
     };
 
+    const Label = {
+      outlined: OutlinedLabel,
+      filled: FilledLabel,
+    }[variant];
+
     return (
       <InputContainer
         $variant={variant}
         $showPlaceholder={!label || shrinkLabel}
+        $fullWidth={fullWidth}
+        $margin={getMargin(spacing)}
       >
         <InputBase
           ref={mergeRefs(ref, inputRef)}
@@ -72,3 +87,13 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
 );
 
 export default Input;
+
+const getMargin = (spacing: TSpacing) => {
+  if (typeof spacing === "string") {
+    return spacing;
+  } else if (typeof spacing === "number") {
+    return `${spacing}px`;
+  } else {
+    return `${spacing?.y || 0}px ${spacing?.y || 0}px`;
+  }
+};
