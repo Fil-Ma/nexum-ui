@@ -1,5 +1,6 @@
 import { StylesOverride } from "@customTypes/index";
 import type { ComponentProps, ElementType } from "react";
+import type { ThemeSchema } from "@theme/defaultTheme/types";
 
 export type TVariant = "text" | "contained" | "outlined";
 export type TColor = "primary" | "secondary";
@@ -15,3 +16,18 @@ type ButtonUniqueProps<E extends ElementType = ElementType> = {
 
 export type ButtonProps<E extends ElementType> = ButtonUniqueProps<E> &
   Omit<ComponentProps<E>, keyof ButtonUniqueProps>;
+
+export enum ButtonState {
+  IDLE = "idle",
+  HOVER = "hover",
+  ACTIVE = "active",
+  DISABLED = "disabled",
+}
+
+type ColorKeys = Record<"color" | "backgroundColor", string>;
+export type TGetColors = (
+  theme: ThemeSchema,
+  variant: TVariant,
+  color: TColor,
+  isDark: boolean
+) => Record<ButtonState, ColorKeys>;
