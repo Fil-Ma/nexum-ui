@@ -1,35 +1,13 @@
 import { ThemeSchema } from "./types";
 import defaultColors from "./colors";
+import typography from "./typography";
 
 const defaultTheme: ThemeSchema = {
   components: {
-    button: {
-      base: "px-4 py-2 rounded",
-      variants: {
-        outlined: "border border-gray-500",
-        solid: "bg-gray-700 text-white",
-      },
-    },
+    button: {},
   },
   colors: defaultColors,
-  typography: {
-    fontFamily: "sans-serif",
-    fontSize: {
-      xs: "12px",
-      sm: "14px",
-      md: "16px",
-      lg: "18px",
-      xl: "20px",
-      "2xl": "24px",
-      "3xl": "32px",
-    },
-    fontWeight: {
-      light: "300",
-      normal: "400",
-      medium: "500",
-      bold: "700",
-    },
-  },
+  typography,
   spacing: {
     none: "0px",
     xs: "4px",
@@ -52,6 +30,6 @@ const defaultTheme: ThemeSchema = {
     lg: "1024px",
     xl: "1280px",
   },
-};
+} as const;
 
 export default defaultTheme;

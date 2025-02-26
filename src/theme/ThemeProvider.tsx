@@ -1,4 +1,5 @@
 import { createContext, useContext, useMemo } from "react";
+import { ThemeProvider as StylesProvider } from "styled-components";
 import {
   TComputedSchema,
   ThemeSchema,
@@ -62,7 +63,7 @@ const ThemeProvider = ({
     <ThemeContext.Provider
       value={{ theme: computedTheme, mode: themeModifier }}
     >
-      {children}
+      <StylesProvider theme={computedTheme}>{children}</StylesProvider>
     </ThemeContext.Provider>
   );
 };

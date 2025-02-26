@@ -31,12 +31,12 @@ function Button<E extends ElementType>({
         ...stylesOverride,
 
         ...(!props?.disabled && {
-          ":hover": {
+          "&:hover": {
             ...themeColors[ButtonState.HOVER],
             ...(stylesOverride as any)?.[":hover"],
           },
 
-          ":active": {
+          "&:active": {
             ...themeColors[ButtonState.ACTIVE],
             ...(stylesOverride as any)?.[":active"],
           },

@@ -94,6 +94,6 @@ const getMargin = (spacing: TSpacing) => {
   } else if (typeof spacing === "number") {
     return `${spacing}px`;
   } else {
-    return `${spacing?.y || 0}px ${spacing?.y || 0}px`;
+    return `${spacing?.y || 0}px ${spacing?.x || 0}px`;
   }
 };
