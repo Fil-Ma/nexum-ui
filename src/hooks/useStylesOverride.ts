@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 import { StylesOverride } from "@customTypes/index";
-import { ThemeSchema } from "@theme/defaultTheme/types";
+import { TComputedSchema } from "@theme/defaultTheme/types";
 
 const useStylesOverride = (
-  theme: ThemeSchema,
+  theme: TComputedSchema,
   customStyles?: StylesOverride
 ) => {
   const stylesOverride = useMemo(() => {

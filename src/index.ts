@@ -21,4 +21,4 @@ export { default as Tooltip } from "./components/Tooltip";
 export { default as Ticker } from "./components/Ticker";
 
 export type { ThemeSchema } from "./theme/defaultTheme/types";
-export { ThemeProvider, useTheme } from "./theme/ThemeProvider";
+export { default as ThemeProvider } from "./theme/ThemeProvider";

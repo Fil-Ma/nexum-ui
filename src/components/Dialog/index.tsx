@@ -1,4 +1,3 @@
-import { useTheme } from "@theme/ThemeProvider";
 import useStylesOverride from "@hooks/useStylesOverride";
 import { IDialogProps, TDialogVariant } from "./types";
 import {
@@ -9,6 +8,7 @@ import {
 } from "./styles";
 import { CSSTransition } from "react-transition-group";
 import { useRef } from "react";
+import { useThemeContext } from "@theme/ThemeProvider";
 
 const containersList: Record<TDialogVariant, React.ComponentType<any>> = {
   modal: DialogContainer,
@@ -25,7 +25,7 @@ const Dialog = ({
   side = "right",
   atoms,
 }: IDialogProps) => {
-  const theme = useTheme();
+  const { theme } = useThemeContext();
   const overlayRef = useRef<HTMLDivElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
 
