@@ -10,12 +10,7 @@ type ColorShades = Record<
 >;
 type TColorValues = Record<TThemeOptions, ColorShades>;
 
-type ComponentStyles = {
-  base: string;
-  variants?: Record<string, string>;
-};
-
-type Typography = {
+export type ThemeTypography = {
   fontFamily: string;
   fontSize: Record<"xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl", string>;
   fontWeight: Record<"light" | "normal" | "medium" | "bold", string>;
@@ -28,9 +23,9 @@ type BorderRadius = Record<"none" | "sm" | "md" | "lg" | "full", string>;
 type Breakpoints = Record<"xs" | "sm" | "md" | "lg" | "xl", string>;
 
 export type ThemeSchema = {
-  components: Record<TComponents, ComponentStyles>;
+  components: Record<TComponents, any>;
   colors: Record<ColorKeys, TColorValues>;
-  typography: Typography;
+  typography: ThemeTypography;
   spacing: Spacing;
   borderRadius: BorderRadius;
   breakpoints: Breakpoints;

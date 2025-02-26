@@ -7,116 +7,122 @@ export const getColors: TGetColors = (theme, variant, color) => {
     contained: {
       primary: {
         [ButtonState.IDLE]: {
-          color: "#FFF",
+          color: neutral[50],
           backgroundColor: primary[500],
         },
         [ButtonState.HOVER]: {
-          color: "#FFF",
+          color: neutral[50],
           backgroundColor: primary[600],
         },
         [ButtonState.ACTIVE]: {
-          color: "#FFF",
+          color: neutral[50],
           backgroundColor: primary[700],
         },
         [ButtonState.DISABLED]: {
-          color: neutral[300],
-          backgroundColor: primary[400],
+          color: neutral[600],
+          backgroundColor: neutral[300],
         },
       },
       secondary: {
         [ButtonState.IDLE]: {
-          color: neutral[800],
-          backgroundColor: neutral[300],
+          color: neutral[100],
+          backgroundColor: secondary[500],
         },
         [ButtonState.HOVER]: {
-          color: neutral[800],
-          backgroundColor: neutral[400],
+          color: neutral[100],
+          backgroundColor: secondary[600],
         },
         [ButtonState.ACTIVE]: {
-          color: neutral[800],
-          backgroundColor: neutral[500],
+          color: neutral[100],
+          backgroundColor: secondary[700],
         },
         [ButtonState.DISABLED]: {
-          color: neutral[300],
-          backgroundColor: primary[400],
+          color: neutral[600],
+          backgroundColor: neutral[300],
         },
       },
     },
     outlined: {
       primary: {
         [ButtonState.IDLE]: {
-          color: primary[400],
+          color: primary[500],
           backgroundColor: "transparent",
-          border: `1px solid ${primary[400]}`,
+          border: `1px solid ${primary[500]}`,
         },
         [ButtonState.HOVER]: {
-          color: "#FFF",
-          backgroundColor: primary[500],
+          color: primary[600],
+          backgroundColor: neutral[200],
+          border: `1px solid ${primary[600]}`,
         },
         [ButtonState.ACTIVE]: {
-          color: "#FFF",
-          backgroundColor: primary[600],
+          color: primary[700],
+          backgroundColor: neutral[200],
+          border: `1px solid ${primary[700]}`,
         },
         [ButtonState.DISABLED]: {
-          color: neutral[300],
-          backgroundColor: primary[400],
-          borderColor: neutral[300],
+          color: neutral[600],
+          backgroundColor: neutral[300],
+          borderColor: neutral[600],
         },
       },
       secondary: {
         [ButtonState.IDLE]: {
-          color: neutral[800],
-          backgroundColor: neutral[300],
+          color: secondary[500],
+          backgroundColor: "transparent",
+          border: `1px solid ${secondary[500]}`,
         },
         [ButtonState.HOVER]: {
-          color: neutral[800],
-          backgroundColor: neutral[400],
+          color: secondary[600],
+          backgroundColor: neutral[200],
+          border: `1px solid ${secondary[600]}`,
         },
         [ButtonState.ACTIVE]: {
-          color: neutral[800],
-          backgroundColor: neutral[500],
+          color: secondary[700],
+          backgroundColor: neutral[200],
+          border: `1px solid ${secondary[700]}`,
         },
         [ButtonState.DISABLED]: {
-          color: neutral[300],
-          backgroundColor: primary[400],
+          color: neutral[600],
+          backgroundColor: neutral[300],
+          borderColor: neutral[600],
         },
       },
     },
     text: {
       primary: {
         [ButtonState.IDLE]: {
-          color: neutral[800],
-          backgroundColor: neutral[300],
+          color: primary[500],
+          backgroundColor: "transparent",
         },
         [ButtonState.HOVER]: {
-          color: neutral[800],
-          backgroundColor: neutral[400],
+          color: primary[600],
+          backgroundColor: neutral[200],
         },
         [ButtonState.ACTIVE]: {
-          color: neutral[800],
-          backgroundColor: neutral[500],
+          color: primary[700],
+          backgroundColor: neutral[200],
         },
         [ButtonState.DISABLED]: {
-          color: neutral[300],
-          backgroundColor: primary[400],
+          color: neutral[600],
+          backgroundColor: neutral[300],
         },
       },
       secondary: {
         [ButtonState.IDLE]: {
-          color: neutral[800],
-          backgroundColor: neutral[300],
+          color: secondary[500],
+          backgroundColor: "transparent",
         },
         [ButtonState.HOVER]: {
-          color: neutral[800],
-          backgroundColor: neutral[400],
+          color: secondary[600],
+          backgroundColor: neutral[200],
         },
         [ButtonState.ACTIVE]: {
-          color: neutral[800],
-          backgroundColor: neutral[500],
+          color: secondary[700],
+          backgroundColor: neutral[200],
         },
         [ButtonState.DISABLED]: {
-          color: neutral[300],
-          backgroundColor: primary[400],
+          color: neutral[600],
+          backgroundColor: neutral[300],
         },
       },
     },

@@ -37,15 +37,15 @@ export const InputContainer = styled.div<{
   border-radius: 6px;
 
   ${(props) => {
-    const { $variant } = props;
+    const { $variant, theme } = props;
 
     if ($variant === "filled") {
       return `
         padding: 20px 12px 12px;
-        background: #F3EBFF;
+        background: ${theme.colors.neutral[200]};
 
-        :focus-within {
-          background: #e8eaf6;
+        &:focus-within {
+          background: ${theme.colors.primary[100]};
         }
         input {
           padding: 4px;
@@ -54,15 +54,15 @@ export const InputContainer = styled.div<{
     } else if ($variant === "outlined") {
       return `
         padding: 8px 12px;
-        border: 1px solid #e0e0e0;
+        border: 1px solid ${theme.colors.neutral[600]};
 
-        :focus-within {
-          border-color: #6200ee;
-          box-shadow: 0 0 4px rgba(98, 0, 238, 0.3);
+        &:focus-within {
+          border-color: ${theme.colors.primary[300]};
+          box-shadow: 0 0 4px ${theme.colors.primary[300]};
         }
 
-        :focus-within .outline {
-          border-color: #6200ee;
+        &:focus-within .outline {
+          border-color: ${theme.colors.primary[200]};
         }
         input {
           padding: 8px;
@@ -79,10 +79,13 @@ export const InputContainer = styled.div<{
   }
 
   ${(props) =>
-    placeholderColor(props.$showPlaceholder ? "#9E9E9E" : "transparent")}
+    placeholderColor(
+      props.$showPlaceholder ? props.theme.colors.neutral[700] : "transparent"
+    )}
 `;
 
 export const InputBase = styled.input`
+  color: ${(props) => props.theme.colors.neutral[900]};
   width: 100%;
   min-width: 20ch;
   box-sizing: border-box;
@@ -99,7 +102,7 @@ export const InputBase = styled.input`
 
 const BaseLabel = styled.label`
   position: absolute;
-  color: #9e9e9e;
+  color: ${(props) => props.theme.colors.neutral[700]};
   font-size: 1rem;
   pointer-events: none;
   transition: all 0.2s ease-out;
@@ -113,22 +116,30 @@ export const FilledLabel = styled(BaseLabel)<{ $shrink: boolean }>`
     `
         top: 0;
         left: 4px;
-        color: #6200ee;
         transform: scale(0.7);
         padding: 0;
+
+        input:focus-within + & {
+          color: ${props.theme.colors.primary[600]};
+        }
     `}
 `;
 
 export const OutlinedLabel = styled(BaseLabel)<{ $shrink: boolean }>`
-  top: 12px;
+  top: 16px;
   left: 12px;
   ${(props) =>
     props.$shrink &&
     `
-        top: -12px;
+        top: -10px;
         left: 0;
+        z-index: 10;
         transform: scale(0.7);
-        color: #6200ee;
+        background-color: ${props.theme.colors.neutral[100]};
+
+        input:focus-within + & {
+          color: ${props.theme.colors.primary[600]};
+        }
     `}
 `;
 
@@ -138,7 +149,7 @@ const Underline = styled.div`
   bottom: 0;
   height: 2px;
   width: 100%;
-  background: #6200ee;
+  background: ${(props) => props.theme.colors.primary[600]};
   transform: scaleX(0);
   transition: transform 0.2s ease-in-out;
 `;
