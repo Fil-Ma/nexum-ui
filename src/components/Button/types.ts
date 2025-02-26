@@ -1,6 +1,6 @@
 import { StylesOverride } from "@customTypes/index";
 import type { ComponentProps, ElementType } from "react";
-import type { ThemeSchema } from "@theme/defaultTheme/types";
+import type { TComputedSchema, ThemeSchema } from "@theme/defaultTheme/types";
 
 export type TVariant = "text" | "contained" | "outlined";
 export type TColor = "primary" | "secondary";
@@ -26,8 +26,7 @@ export enum ButtonState {
 
 type ColorKeys = Record<"color" | "backgroundColor", string>;
 export type TGetColors = (
-  theme: ThemeSchema,
+  theme: TComputedSchema,
   variant: TVariant,
-  color: TColor,
-  isDark: boolean
+  color: TColor
 ) => Record<ButtonState, ColorKeys>;

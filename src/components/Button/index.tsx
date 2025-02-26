@@ -1,10 +1,9 @@
 import { ElementType } from "react";
 import { ButtonProps, ButtonState } from "./types";
 import ButtonBase from "./ButtonBase";
-import { useTheme } from "@theme/ThemeProvider";
-import { ThemeSchema } from "@theme/defaultTheme/types";
 import useStylesOverride from "@hooks/useStylesOverride";
 import { getColors } from "./getColors";
+import { useThemeContext } from "@theme/ThemeProvider";
 
 function Button<E extends ElementType>({
   as,
@@ -15,10 +14,10 @@ function Button<E extends ElementType>({
   customStyles,
   ...props
 }: ButtonProps<E>) {
-  const theme = useTheme();
+  const { theme } = useThemeContext();
   const stylesOverride = useStylesOverride(theme, customStyles);
 
-  const themeColors = getColors(theme, variant, color, false);
+  const themeColors = getColors(theme, variant, color);
 
   return (
     <ButtonBase
