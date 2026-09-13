@@ -56,4 +56,3 @@ jest-html-reports/
 storybook-static/
 
 # Generated types
-*.d.ts

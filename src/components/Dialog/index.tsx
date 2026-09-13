@@ -31,11 +31,11 @@ const Dialog = ({
 
   const overlayStyleOverride = useStylesOverride(
     theme,
-    atoms?.["overlay"].customStyles
+    atoms?.["overlay"].customStyles,
   );
   const containerStyleOverride = useStylesOverride(
     theme,
-    atoms?.["container"].customStyles
+    atoms?.["container"].customStyles,
   );
 
   const handleOverlayClick = (e: React.MouseEvent<HTMLElement>) => {
@@ -69,7 +69,8 @@ const Dialog = ({
           role="dialog"
           aria-modal="true"
           onClick={handleOverlayClick}
-          $customStyles={overlayStyleOverride}
+          $side={side}
+          $customStyles={overlayStyleOverride as any}
           $variant={variant}
         >
           <CSSTransition

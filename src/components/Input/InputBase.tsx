@@ -80,7 +80,7 @@ export const InputContainer = styled.div<{
 
   ${(props) =>
     placeholderColor(
-      props.$showPlaceholder ? props.theme.colors.neutral[700] : "transparent"
+      props.$showPlaceholder ? props.theme.colors.neutral[700] : "transparent",
     )}
 `;
 
